@@ -1,0 +1,30 @@
+User:
+	email
+	username
+	password
+	
+MemoryCard:
+	pName
+	eName
+	pDesc
+	eDesc
+	lvl
+	
+Quiz:
+	o2m user
+	m2o quizelement
+	
+	
+QuizElement: 
+	o2o MemoryCard
+	wasCorrect bool
+	
+UserMemoryCards:
+	o2m user
+	score 
+	o2m memorycard
+	cardCount int 
+	lastDate
+	
+
+		
