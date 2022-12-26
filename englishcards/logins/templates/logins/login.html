@@ -1,4 +1,5 @@
 <!doctype html>
+{% include 'navbar.html' %}
 {% load static %}
 
 <link rel ="stylesheet" href ="{% static 'logins/logins.css' %}">
@@ -21,9 +22,7 @@
       <input type="text" id="login" class="input" name="username" placeholder="nazwa użytkownika">
       <input type="password" id="password" class="input" name="password" placeholder="hasło">
       {% for message in messages %}
-      {% if 'bad_credentials' in message.tags %}
     <div class="login-box-message">{{message}}</div>
-      {% endif %}
     {% endfor %}
       <br></br>
       <input type="submit" class="submit" value="Zaloguj">

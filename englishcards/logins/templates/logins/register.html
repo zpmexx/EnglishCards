@@ -1,5 +1,6 @@
 <!doctype html>
 {% load static %}
+{% include 'navbar.html' %}
 <html>
   <title> Rejestracja użytkownika </title>
     <body>
@@ -18,7 +19,7 @@
                     {{ form.password2 }}
                     <input type="submit" value="Zarejestruj">
                      {% for message in messages  %}
-                        {% if 'warn' in message.tags %}
+                        {% if 'bad_register_credentials' in message.tags %}
                             <p style ="color: red">{{message}}</p>
                         {% endif %}
                     {% endfor %}

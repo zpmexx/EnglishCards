@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterUserForm
+from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -20,6 +21,8 @@ def loginPage(request):
             if user is not None:
                 login(request, user)
                 return redirect('home')
+            else:
+                messages.info(request, 'Niepoprawne dane logowania', extra_tags='bad_credentials')
             
     context = {}
     return render (request, 'logins/login.html',context)
@@ -32,6 +35,13 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
+            messages.success(request,'Stworzono konto dla ' + user, extra_tags='singup')
             return redirect('login')
+        else:
+            messages.info(request,'Błedne dane rejestracji', extra_tags='bad_register_credentials')
     context = {'form':form}
     return render (request, 'logins/register.html',context)
+
+def logoutPage(request):
+    logout(request)
+    return redirect('login')
