@@ -1,0 +1,32 @@
+<!doctype html>
+{% load static %}
+<html>
+  <title> Rejestracja użytkownika </title>
+    <body>
+    
+        <link rel ="stylesheet" href ="{% static 'logins/styles.css' %}">
+        <div class="content-wrapper">
+          <div class="login-box">
+            <form method = "POST"  class="login-box-form">
+                {% csrf_token %}
+                  <div class="container">
+                    {{ form.username }}
+                    {{ form.email }}
+                    {{ form.first_name }}
+                    {{ form.last_name }}
+                    {{ form.password1 }}
+                    {{ form.password2 }}
+                    <input type="submit" value="Zarejestruj">
+                     {% for message in messages  %}
+                        {% if 'warn' in message.tags %}
+                            <p style ="color: red">{{message}}</p>
+                        {% endif %}
+                    {% endfor %}
+                  </div>
+            </form>
+              </div>
+            </div>
+          </div>
+    </div>
+    </body>
+</html>
