@@ -27,4 +27,5 @@ urlpatterns = [
     path('rejestracja/', logins_views.registerPage, name = 'register'),
     path('wylogowanie/', logins_views.logoutPage, name = 'logout'),
     path('dodaj/', words_views.addWordPage, name = 'addWord'),
+    path('fiszki/', words_views.learnFromCardsPage, name = 'learnWord')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

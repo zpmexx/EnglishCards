@@ -12,5 +12,11 @@ def addWordPage(request):
     context = {'form':form}
     return render (request, 'words/addWord.html',context)
 
+@login_required
+def learnFromCardsPage(request):
+    cards = MemoryCard.objects.all()
+    context={'cards':cards}
+    return render (request, 'words/fiszki.html', context)
+
 # Create your views here.
 

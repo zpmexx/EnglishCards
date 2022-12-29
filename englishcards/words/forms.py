@@ -7,3 +7,5 @@ class AddMemoryCardForm(ModelForm):
     class Meta:
         model = MemoryCard
         fields = ['polishName','englishName','polishDescription','englishDescription','wordLevel']
+
+
