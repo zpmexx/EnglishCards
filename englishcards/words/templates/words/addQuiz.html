@@ -1,0 +1,14 @@
+{% load crispy_forms_tags %} 
+<!doctype html>
+{% include 'navbar.html' %}
+{% load static %}
+
+    <div class="container">
+        {% for QuizElement in quiz_elements %}
+        <tr>                                            
+
+            <td>{{QuizElement.memoryCard}}</td>                                                                                                 
+
+        </tr>
+        {% endfor %}
+    </div>
