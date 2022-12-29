@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from logins import views as logins_views
+from words import views as words_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,4 +26,5 @@ urlpatterns = [
     path('logowanie/', logins_views.loginPage, name = 'login'),
     path('rejestracja/', logins_views.registerPage, name = 'register'),
     path('wylogowanie/', logins_views.logoutPage, name = 'logout'),
+    path('dodaj/', words_views.addWordPage, name = 'addWord'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

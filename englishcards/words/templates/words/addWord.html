@@ -1,0 +1,11 @@
+{% load crispy_forms_tags %} 
+<!doctype html>
+{% include 'navbar.html' %}
+{% load static %}
+
+<form method = "POST"  class="login-box-form">
+{% csrf_token %}
+    <div class="container">
+      {{form|crispy}}
+      <input type="submit" value="Dodaj">
+    </div>

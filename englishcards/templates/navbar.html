@@ -19,6 +19,7 @@
       <li><a href="{% url 'home' %}">Strona główna</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'addWord' %}"><span class="glyphicon glyphicon-log-in"></span>Dodaj słówko</a></li>
       <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span>Wyloguj</a></li>
       {% if user.is_authenticated and request.user.is_staff %}
       <li><a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-wrench"></span>Panel Administratora</a></li>

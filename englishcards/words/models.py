@@ -1,3 +1,37 @@
 from django.db import models
 
 # Create your models here.
+
+english_level = [
+    (0, ("A1")),
+    (1, ("A2")),
+    (2, ("B1")),
+    (3, ("B2")),
+    (4, ("C1")),
+    (5, ("C2")),
+]
+
+
+confirmation_status = [
+    (0, ("zatwierdzone")),
+    (1, ("niezatwierdzone")),
+]
+
+
+
+class MemoryCard(models.Model):
+    polishName = models.CharField(verbose_name="Polskie słowo", blank=False, null=False, default = "defaultpolishword", max_length=50)
+    englishName = models.CharField(verbose_name="Angielskie słowo", blank=False, null=False, default = "defaultenglishword", max_length=50)
+    polishDescription = models.TextField(verbose_name="Polski opis", blank=False, null=False, default = "defaultpolishdescription", max_length=500)
+    englishDescription = models.TextField(verbose_name="Angielski opis", blank=False, null=False, default = "defaultenglishdescription", max_length=500)
+    wordLevel = models.IntegerField(choices=english_level, default=0, verbose_name='Poziom słówka')
+    confirmation_status = models.IntegerField(choices=confirmation_status, default=0, verbose_name='Status')
+
+    def __str__(self):
+        return str(f'{self.englishName},{self.polishName}')
+
+    class Meta:
+        verbose_name = "Słówko"
+        verbose_name_plural = "Słówka"
+
+    
