@@ -1,4 +1,5 @@
 from django.db import models
+from logins.models import User
 
 # Create your models here.
 
@@ -34,4 +35,10 @@ class MemoryCard(models.Model):
         verbose_name = "Słówko"
         verbose_name_plural = "Słówka"
 
-    
+class Quiz(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+class QuizElement(models.Model):
+    memoryCard = models.OneToOneField( MemoryCard, on_delete=models.DO_NOTHING)
+    wasCorrect = models.BooleanField(verbose_name="Poprawność odpowiedzi", blank=True, null=True, default = False)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
