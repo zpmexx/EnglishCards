@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from logins.models import User
-
+from django.contrib import messages
 from .models import MemoryCard, Quiz, QuizElement
 from .forms import AddMemoryCardForm
 
@@ -9,7 +9,17 @@ from .forms import AddMemoryCardForm
 def addWordPage(request):
     form = AddMemoryCardForm()
     if request.method == 'POST':
-        pass
+        form = AddMemoryCardForm(request.POST)
+        if form.is_valid():
+            if request.user.is_staff:
+                form.save()
+                messages.success(request,'Słówko dodane do bazy!', extra_tags='added_word')
+            else:
+                word = form.save(commit=False)
+                word.confirmation_status = 1
+                word.save()
+                messages.success(request,'Słówko dodane do bazy oraz oczekuje na weryfikacje!', extra_tags='added_word')
+            
     context = {'form':form}
     return render (request, 'words/addWord.html',context)
 
