@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterUserForm
 from django.contrib import messages
+from words.models import MemoryCard, FavoriteUserCards
+from django.core.paginator import Paginator
+import random
 # Create your views here.
 
 def home(request):
-    context = {}
+    cards = list(MemoryCard.objects.all())
+    dailyWords = random.sample(cards, 3)
+    context = {'dailyWords' : dailyWords}
     return render (request, 'logins/home.html', context)
 
 def loginPage(request):
@@ -45,3 +50,20 @@ def registerPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('login')
+
+def userFavorites(request):
+    favoriteCards = FavoriteUserCards.objects.filter(user = request.user)
+    paginator = Paginator(favoriteCards, 3)
+    page_number = request.GET.get("page")
+    favoriteCards = paginator.get_page(page_number)
+    context = {'favoriteCards': favoriteCards}
+    iterator = 0
+    if request.method == 'POST':
+        for arg in request.POST:
+            if iterator == 0:
+                iterator = 1
+            else:
+                word = arg
+        englishWord, polishWord = word.split(',')
+        FavoriteUserCards.objects.filter(user = request.user, card__englishName = englishWord, card__polishName = polishWord).delete()
+    return render (request, 'logins/userfavorites.html',context)

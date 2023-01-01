@@ -1,0 +1,35 @@
+{% load static %}
+{% include 'navbar.html' %}
+
+<link rel ="stylesheet" href ="{% static 'logins/userfavorites.css' %}">
+<h1>Twoje ulubione słówka</h1>
+{% for favorite in favoriteCards %}
+<form method="POST">
+    {% csrf_token %}
+<div class = "word">
+    <h2>{{favorite.card.englishName}}</h2>
+    <h3>{{favorite.card.englishDescription}}</h3>
+    <h2>{{favorite.card.polishName}}</h2>
+    <h3>{{favorite.card.polishDescription}}</h3>
+    <input type="submit" value="Usuń z ulubionych" name="{{favorite.card.englishName}},{{favorite.card.polishName}}" style="width: 100%;border-radius: 30px;">
+    </div>
+    </form>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if favoriteCards.has_previous %}
+            <a href="?page=1">&laquo; Pierwsza</a>
+            <a href="?page={{ favoriteCards.previous_page_number }}">Poprzednia</a>
+        {% endif %}
+
+        <span class="current">
+            Strona {{ favoriteCards.number }} z {{ favoriteCards.paginator.num_pages }}
+        </span>
+
+        {% if favoriteCards.has_next %}
+            <a href="?page={{ favoriteCards.next_page_number }}">Następna</a>
+            <a href="?page={{ favoriteCards.paginator.num_pages }}">Ostatnia &raquo;</a>
+        {% endif %}
+    </span>
+</div>
