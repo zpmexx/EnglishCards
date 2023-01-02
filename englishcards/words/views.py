@@ -32,12 +32,13 @@ def addQuizPage(request):
     current_user = request.user
     quiz_obj = Quiz(user = current_user)
     quiz_obj.save()
-    cards = MemoryCard.objects.all()
-    for card in cards:
-        quiz_element_obj = QuizElement(memoryCard = card, quiz = quiz_obj)
+    all_cards = list(FavoriteUserCards.objects.all())
+    cards_to_learn = []
+    for i in range(10):
+        cards_to_learn.append(random.choice(all_cards)) 
+        quiz_element_obj = QuizElement(memoryCard = cards_to_learn[i], quiz = quiz_obj)
         quiz_element_obj.save()
-    quiz_elements = QuizElement.objects.filter(quiz = quiz_obj)
-    context = {'quiz_elements' : quiz_elements}
+    context = {'cards_to_learn' : cards_to_learn}
     return render(request, 'words/addQuiz.html', context)
 
 

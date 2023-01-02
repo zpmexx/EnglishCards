@@ -55,6 +55,6 @@ class Quiz(models.Model):
 
 
 class QuizElement(models.Model):
-    memoryCard = models.ForeignKey(MemoryCard, on_delete=models.DO_NOTHING)
+    memoryCard = models.ForeignKey(FavoriteUserCards, on_delete=models.DO_NOTHING)
     wasCorrect = models.BooleanField(verbose_name="Poprawność odpowiedzi", blank=True, null=True, default = False)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
