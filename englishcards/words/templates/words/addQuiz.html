@@ -4,10 +4,14 @@
 {% load static %}
 
     <div class="container">
-        {% for QuizElement in quiz_elements %}
+        {% for card in cards_to_learn %}
         <tr>                                            
 
+<<<<<<< HEAD
             <td>{{QuizElement.memoryCard.englishName}}</td>                                                                                                 
+=======
+            <td>{{card}}</td>                                                                                                 
+>>>>>>> origin/feature_words
 
         </tr>
         {% endfor %}
