@@ -28,4 +28,9 @@ urlpatterns = [
     path('wylogowanie/', logins_views.logoutPage, name = 'logout'),
     path('dodaj/', words_views.addWordPage, name = 'addWord'),
     path('nowy_quiz/', words_views.addQuizPage, name = 'addQuiz'),
+    path('ulubione/', logins_views.userFavorites, name = 'userFavorites'),
+    path('nauka/', words_views.selectLevel, name = 'selectLevel'),
+    path('nauka/<slug:slug>/', words_views.learnByLevel, name = 'learnByLevel'),
+    
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,18 @@
+.level {
+    width: 50%;
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+h2 {
+    font-size: 25px;
+    font-style: italic;
+}
+
+h1 {
+    text-align: center;
+}

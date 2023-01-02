@@ -6,6 +6,12 @@
 <form method = "POST"  class="login-box-form">
 {% csrf_token %}
     <div class="container">
+      {% for message in messages  %}
+        {% if 'added_word' in message.tags %}
+            <p style ="color: red">{{message}}</p>
+        {% endif %}
+      {% endfor %}
       {{form|crispy}}
       <input type="submit" value="Dodaj">
     </div>
+</form>

@@ -1,2 +1,13 @@
 {% include 'navbar.html' %}
-home page
+{% load static %}
+<link rel ="stylesheet" href ="{% static 'logins/home.css' %}">
+<h1>Witajcie na naszej stronie! Poniżej kilka przykładowych słówek:</h1>
+{% for word in dailyWords  %}
+<div class = "word">
+<h2>{{word.englishName}}</h2>
+<h3>{{word.englishDescription}}</h3>
+<h2>{{word.polishName}}</h2>
+<h3>{{word.polishDescription}}</h3>
+</div>
+{% endfor %}
+
