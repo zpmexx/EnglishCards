@@ -58,32 +58,35 @@ body {
 </style>
 </head>
 <body>
-
+  {% if wordToLearn %}
 <div class="container">
 <div class="flip-card">
   <div class="flip-card-inner">
-    {% for i in cards %}
     <div class="flip-card-front">
-      <h2>{{i.englishName}}</h2>
-      <h4>{{i.englishDescription}}</h4>
-      <p>{{i.wordLevel}}</p>
+      <h2>{{wordToLearn.englishName}}</h2>
+      <h4>{{wordToLearn.englishDescription}}</h4>
+      <p>{{wordToLearn.get_wordLevel_display}}</p>
     </div>
     <div class="flip-card-back">
-      <h2>{{i.polishName}}</h2> 
-      <h4>{{i.polishDescription}}</h4>
-      <p>{{i.wordLevel}}</p>
+      <h2>{{wordToLearn.polishName}}</h2> 
+      <h4>{{wordToLearn.polishDescription}}</h4>
+      <p>{{wordToLearn.get_wordLevel_display}}</p>
     </div>
   </div>
 </div>
-
-{% endfor %}
+<form method="POST">
+  {% csrf_token %}
 <div class="vertical-center">
-    <button type="button" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok"></span> Zapamiętane!</button>
+    <button type="button" class="btn btn-success btn-lg" name = "next"><span class="glyphicon glyphicon-ok" ></span>
+      Następne</button>
 </div>
 <div class="vertical-center"> 
-    <button type="button" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-refresh"></span> Powtórz jeszcze raz</button>
+    <button type="button" class="btn btn-warning btn-lg" name = "{{wordToLearn.id}}"><span class="glyphicon glyphicon-refresh"></span> Powtórz jeszcze raz</button>
 </div> 
-</div>
+</form>
+{% else %}
+<h1>Brak słówek do nauki z tego poziomu!<h1>
+{% endif %}
 </body>
 </html>
 <!-- <!DOCTYPE html>

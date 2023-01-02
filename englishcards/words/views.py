@@ -79,7 +79,7 @@ def learnByLevel(request, slug):
             print(card)
             favoriteCard = FavoriteUserCards.objects.create(user = request.user, card = card)
             favoriteCard.save()
-    return render(request, 'words/learnByLevel.html', context)
+    return render(request, 'words/fiszki.html', context)
     
 
 # Create your views here.

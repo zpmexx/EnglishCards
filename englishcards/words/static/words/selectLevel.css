@@ -1,7 +1,9 @@
 .level {
     width: 50%;
     text-align: center;
-    border: 2px solid red;
+    background-image: linear-gradient(to bottom right, #ccffcc, #66ff66);
+    /* background-color: linear-gradient(#e66465, #9198e5); */
+    border: 2px solid rgb(102, 102, 110); 
     border-radius: 5px;
     margin: 0 auto;
     padding: 10px;
