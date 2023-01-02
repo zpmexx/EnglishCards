@@ -1,0 +1,22 @@
+{% include 'navbar.html' %}
+{% load static %}
+<link rel ="stylesheet" href ="{% static 'words/learnByLevel.css' %}">
+{% if wordToLearn %}
+<div class = "word">
+<h2>{{wordToLearn.englishName}}</h2>
+<h3>{{wordToLearn.englishDescription}}</h3>
+<h2>{{wordToLearn.polishName}}</h2>
+<h3>{{wordToLearn.polishDescription}}</h3>
+</div>
+<form method="POST">
+    {% csrf_token %}
+<div class = "buttons">
+    <div class="row">
+    <button type="submit" class="btn btn-light" name = "next"><p>Następne</p></button>
+    <button type="submit" class="btn btn-light" name = "{{wordToLearn.id}}"><p>Dodaj do ulubionych</p></button>
+    </div>
+</div>
+</form>
+{% else %}
+<h1>Brak słówek do nauki z tego poziomu!<h1>
+{% endif %}

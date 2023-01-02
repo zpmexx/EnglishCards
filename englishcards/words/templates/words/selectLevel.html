@@ -1,0 +1,10 @@
+{% load static %}
+{% include 'navbar.html' %}
+<h1>Wybierz poziom do nauki:</h1>
+<link rel ="stylesheet" href ="{% static 'words/selectLevel.css' %}">
+{% for level in levels %}
+<div class = "level">
+<h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
+
+</div>
+{% endfor %}

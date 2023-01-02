@@ -1,4 +1,5 @@
 from django.db import models
+from logins.models import User
 
 # Create your models here.
 
@@ -33,5 +34,27 @@ class MemoryCard(models.Model):
     class Meta:
         verbose_name = "Słówko"
         verbose_name_plural = "Słówka"
+        
+        
+class FavoriteUserCards(models.Model):
+    user = models.ForeignKey(User, verbose_name="Użytkownik",on_delete=models.CASCADE)
+    card = models.ForeignKey(MemoryCard, verbose_name="Karta",on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(f'{self.user.username},{self.card.englishName},{self.card.polishName}')
     
+    class Meta:
+        verbose_name = "Ulubiona karta"
+        verbose_name_plural = "Ulubione karty"
+        
+
+class Quiz(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+
+
+
+class QuizElement(models.Model):
+    memoryCard = models.ForeignKey(FavoriteUserCards, on_delete=models.DO_NOTHING)
+    wasCorrect = models.BooleanField(verbose_name="Poprawność odpowiedzi", blank=True, null=True, default = False)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)

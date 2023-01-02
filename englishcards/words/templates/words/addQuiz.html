@@ -1,0 +1,14 @@
+{% load crispy_forms_tags %} 
+<!doctype html>
+{% include 'navbar.html' %}
+{% load static %}
+
+    <div class="container">
+        {% for card in cards_to_learn %}
+        <tr>                                            
+
+            <td>{{card}}</td>                                                                                                 
+
+        </tr>
+        {% endfor %}
+    </div>
