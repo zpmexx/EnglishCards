@@ -8,12 +8,14 @@
 <h2>{{wordToLearn.polishName}}</h2>
 <h3>{{wordToLearn.polishDescription}}</h3>
 </div>
+
+
 <form method="POST">
     {% csrf_token %}
 <div class = "buttons">
     <div class="row">
-    <button type="submit" class="btn btn-light" name = "next"><p>Następne</p></button>
-    <button type="submit" class="btn btn-light" name = "{{wordToLearn.id}}"><p>Dodaj do ulubionych</p></button>
+    <button type="button" class="btn btn-light" name = "next"><p>Następne</p></button>
+    <button type="button" class="btn btn-light" name = "{{wordToLearn.id}}"><p>Dodaj do ulubionych</p></button>
     </div>
 </div>
 </form>
