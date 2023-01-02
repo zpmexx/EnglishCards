@@ -4,11 +4,21 @@
 {% load static %}
 
     <div class="container">
-        {% for card in cards_to_learn %}
+        {% for c in four_cards %}
         <tr>                                            
 
-            <td>{{card}}</td>                                                                                                 
+            <h4>{{c}}</h4>                                                                                                 
 
         </tr>
         {% endfor %}
+        <h1> {{iterator}} <h1>
     </div>
+    <div class = "buttons"> 
+    <form method="POST">
+        {% csrf_token %}
+    <div class = "buttons">
+        <div class="row">
+        <button type="submit" class="btn btn-light" name="iterator" value={{iterator}}><p>Następne</p></button>
+        </div>
+    </div>
+    </form>
