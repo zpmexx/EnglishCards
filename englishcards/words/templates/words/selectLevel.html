@@ -1,12 +1,101 @@
 {% load static %}
 {% include 'navbar.html' %}
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    /* Style the header */
+    .header {
+      background-color: #f1f1f1;
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+    }
+    
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      background-color: #7d978c;
+      width: 50%;
+      /* border: 2px; */
+      text-align: center;
+      padding: 50px;
+      font-size: 50px;
+      /* padding: 10px; */
+      /*height: 180px;  /*Should be removed. Only for demonstration */
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+      width: 100%;
+    }
+    
+    /* Style the footer */
+    .footer {
+      background-color: #f1f1f1;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    /* @media (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
+    } */
+    </style>
+    <div class="header">
 <h1>Wybierz poziom:</h1>
 <link rel ="stylesheet" href ="{% static 'words/selectLevel.css' %}">
+</div>
+
 
 
 {% for level in levels %}
-<div class = "level">
-<h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
+<div class="row">
+{% if level == 'A1' %}
+    <div class = "column" style="background-color:#80ff80;">
+        <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
+    </div>
+{% endif %}
+{% if level == 'A2' %}
+    <div class = "column" style="background-color:#4dff4d;">
+        <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
+    </div>
 </div>
+{% endif %}
+
+<div class="row">
+    {% if level == 'B1' %}
+        <div class = "column" style="background-color:#b3d9ff;">
+            <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
+        </div>
+    {% endif %}
+    {% if level == 'B2' %}
+        <div class = "column" style="background-color:#80bfff;">
+            <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% if level == 'C1' %}
+            <div class = "column" style="background-color:#ffd9b3">
+                <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
+            </div>
+        {% endif %}
+        {% if level == 'C2' %}
+            <div class = "column" style="background-color:#ffbf80;">
+                <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
+            </div>
+        </div>
+        {% endif %}
 
 {% endfor %}

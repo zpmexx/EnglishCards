@@ -9,7 +9,6 @@
 <h3>{{wordToLearn.polishDescription}}</h3>
 </div>
 
-
 <form method="POST">
     {% csrf_token %}
 <div class = "buttons">
@@ -20,5 +19,7 @@
 </div>
 </form>
 {% else %}
+<div class="container">
 <h1>Brak słówek do nauki z tego poziomu!<h1>
+</div>
 {% endif %}

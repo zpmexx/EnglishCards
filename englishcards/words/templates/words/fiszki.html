@@ -76,12 +76,12 @@ body {
 </div>
 <form method="POST">
   {% csrf_token %}
-<div class="vertical-center">
-    <button type="button" class="btn btn-success btn-lg" name = "next"><span class="glyphicon glyphicon-ok" ></span>
+<div class="vertical-center" style="text-align: center; ">
+    <button type="submit" type="button" class="btn btn-success btn-lg" name = "next"><span class="glyphicon glyphicon-ok" ></span>
       Następne</button>
 </div>
-<div class="vertical-center"> 
-    <button type="button" class="btn btn-warning btn-lg" name = "{{wordToLearn.id}}"><span class="glyphicon glyphicon-refresh"></span> Powtórz jeszcze raz</button>
+<div class="vertical-center" style="text-align: center;"> 
+    <button type="submit" type="button" class="btn btn-warning btn-lg" name = "{{wordToLearn.id}}"><span class="glyphicon glyphicon-refresh"></span> Powtórz jeszcze raz</button>
 </div> 
 </form>
 {% else %}

@@ -15,16 +15,17 @@
       {% if user.is_authenticated  %}
       <a class="navbar-brand" href="{% url 'home' %}">English Cards</a>
     </div>
-    <ul class="nav navbar-nav">
+    <!-- <ul class="nav navbar-nav">
       <li><a href="{% url 'home' %}">Strona główna</a></li>
-    </ul>
+    </ul> -->
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="{% url 'selectLevel' %}"><span class="glyphicon glyphicon-plus"></span>Nauka słówek</a></li>
-      <li><a href="{% url 'addWord' %}"><span class="glyphicon glyphicon-plus"></span>Dodaj słówko</a></li>
-      <li><a href="{% url 'userFavorites' %}"><span class="glyphicon glyphicon-plus"></span>Ulubione</a></li>
-      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span>Wyloguj</a></li>
+      <li><a href="{% url 'selectLevel' %}"><span class="glyphicon glyphicon-education"></span> Nauka słówek</a></li>
+      <li><a href="{% url 'addWord' %}"><span class="glyphicon glyphicon-plus"></span> Dodaj słówko</a></li>
+      <li><a href="{% url 'userFavorites' %}"><span class="glyphicon glyphicon-star"></span> Ulubione</a></li>
+      <!-- <li><a href="{% url 'addQuiz' %}"><span class="glyphicon glyphicon-check"></span> Quiz</a></li> --> 
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Wyloguj</a></li>
       {% if user.is_authenticated and request.user.is_staff %}
-      <li><a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-wrench"></span>Panel Administratora</a></li>
+      <li><a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-wrench"></span> Panel Administratora</a></li>
     </ul>
       {% endif %}
       

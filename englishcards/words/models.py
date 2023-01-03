@@ -49,12 +49,13 @@ class FavoriteUserCards(models.Model):
         
 
 class Quiz(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
 
 
 
 class QuizElement(models.Model):
-    memoryCard = models.ForeignKey(FavoriteUserCards, on_delete=models.DO_NOTHING)
+    memoryCard = models.ForeignKey(FavoriteUserCards, on_delete=models.CASCADE)
     wasCorrect = models.BooleanField(verbose_name="Poprawność odpowiedzi", blank=True, null=True, default = False)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    order = models.IntegerField(blank=True, null=True, default = 0)
