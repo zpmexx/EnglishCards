@@ -1,22 +1,104 @@
 {% load static %}
 {% include 'navbar.html' %}
+<style>
+body {
+  background-color: #dfe6e9;
+  -webkit-transform: perspective(900px);
+  -webkit-transform-style: preserve-3d;
+}
+.title{
+  width:100%;
+  text-align: center;
+}
+.title h1{
+  font-size:50px;
+  font-family: 'Exo', sans-serif;
+}
+.card1 {
+  text-align:center;
+  position: absolute;
+  left: 550px;
+  width: 250px;
+  height: 350px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: linear-gradient(rgb(133, 243, 184),rgb(107, 250, 100));
+  animation: animate 1s linear infinite;
+  transition:.6s;
+  
+  transform: rotatex(75deg) translatey(-200px) translatez(-100px);
+  box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.5);
+}
+.card1:hover{
+    transform: rotatex(0deg);
+    transition:.6s;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+h3{
+  font-size:25px;
+  font-family:  sans-serif;
+  color:rgb(5, 76, 49);
+  text-shadow: 0 0 2px rgb(13, 138, 90);
+  transform: translatey(10px);
+}
+h2{
+  font-size:20px;
+  font-family: sans-serif;
+  color:rgb(19, 53, 137);
+  text-shadow: 0 0 2px rgb(65, 107, 216);
+  transform: translatey(10px);
+}
+h4{
+  font-size:20px;
+  font-family: sans-serif;
+  color:rgb(84, 103, 94);
+  text-shadow: 0 0 2px rgb(21, 19, 19);
+  transform: translatey(10px);
+}
+.pagination {
+  display: inline-block;
+}
 
+.pagination a {
+  position: relative;
+  top: 500px;
+  color: black;
+  float: down;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #95cc97;}
+
+.current {
+    top: 500px;
+}
+</style>
 <link rel ="stylesheet" href ="{% static 'logins/userfavorites.css' %}">
-<h1>Twoje ulubione słówka</h1>
+<h1>Ulubione</h1>
+<div class="container">
 {% for favorite in favoriteCards %}
 <form method="POST">
     {% csrf_token %}
-<div class = "word">
+<div class = "card1">
     <h2>{{favorite.card.englishName}}</h2>
     <h3>{{favorite.card.englishDescription}}</h3>
     <h2>{{favorite.card.polishName}}</h2>
     <h3>{{favorite.card.polishDescription}}</h3>
     <h4>{{favorite.card.get_wordLevel_display}}</h4>
-    <input type="submit" value="Usuń z ulubionych" name="{{favorite.card.englishName}},{{favorite.card.polishName}}" style="width: 100%;border-radius: 30px;">
+    <p><br></p>
+    <input type="submit" value="Usuń z ulubionych" name="{{favorite.card.englishName}},{{favorite.card.polishName}}" style="width: 75%;border-radius: 20px; background-color: #9e9e9e; text-shadow: 0 0 2px rgb(21, 19, 19); color:black">
     </div>
     </form>
 {% endfor %}
 
+<center>
 <div class="pagination">
     <span class="step-links">
         {% if favoriteCards.has_previous %}
@@ -24,13 +106,14 @@
             <a href="?page={{ favoriteCards.previous_page_number }}">Poprzednia</a>
         {% endif %}
 
-        <span class="current">
-            Strona {{ favoriteCards.number }} z {{ favoriteCards.paginator.num_pages }}
-        </span>
-
         {% if favoriteCards.has_next %}
             <a href="?page={{ favoriteCards.next_page_number }}">Następna</a>
             <a href="?page={{ favoriteCards.paginator.num_pages }}">Ostatnia &raquo;</a>
         {% endif %}
     </span>
 </div>
+<span class="current">
+    Strona {{ favoriteCards.number }} z {{ favoriteCards.paginator.num_pages }}
+</span>
+</div>
+</center>
