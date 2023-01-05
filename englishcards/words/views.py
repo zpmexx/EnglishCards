@@ -71,23 +71,6 @@ def selectLevel(request):
     return render(request, 'words/selectLevel.html', context)
 
 def learnByLevel(request, slug):
-    if slug == 'A1': level = 0
-    elif slug == 'A2': level = 1
-    elif slug == 'B1': level = 2
-    elif slug == 'B2': level = 3
-    elif slug == 'C1': level = 4
-    elif slug == 'C2': level = 5
-    words = list(MemoryCard.objects.filter(wordLevel = level))
-    userWords = FavoriteUserCards.objects.filter(user = request.user)
-    userWordsList = []
-    for word in userWords:
-        userWordsList.append(word.card)
-        
-    wordsToLearn = list(set(words) - set (userWordsList))
-    wordToLearn = []
-    if wordsToLearn:
-        wordToLearn = random.choice(wordsToLearn)
-    context = {'wordToLearn': wordToLearn}
     
     if request.method == 'POST':
         if 'next' in request.POST:
@@ -101,8 +84,32 @@ def learnByLevel(request, slug):
                     cardId = arg
             card = MemoryCard.objects.get(id = cardId)
             print(card)
+            # if card in wordsToLearn:
+            #     wordsToLearn.remove(card)
             favoriteCard = FavoriteUserCards.objects.create(user = request.user, card = card)
             favoriteCard.save()
+    
+    if slug == 'A1': level = 0
+    elif slug == 'A2': level = 1
+    elif slug == 'B1': level = 2
+    elif slug == 'B2': level = 3
+    elif slug == 'C1': level = 4
+    elif slug == 'C2': level = 5
+    words = list(MemoryCard.objects.filter(wordLevel = level))
+    userWords = FavoriteUserCards.objects.filter(user = request.user)
+    userWordsList = []
+    for word in userWords:
+        userWordsList.append(word.card)
+    
+    print(userWordsList)    
+    wordsToLearn = list(set(words) - set (userWordsList))
+    print(wordsToLearn)
+    wordToLearn = []
+    if wordsToLearn:
+        wordToLearn = random.choice(wordsToLearn)
+    context = {'wordToLearn': wordToLearn}
+    
+
     return render(request, 'words/fiszki.html', context)
     
 

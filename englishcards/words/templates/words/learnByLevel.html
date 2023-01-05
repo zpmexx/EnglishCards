@@ -14,7 +14,8 @@
 <div class = "buttons">
     <div class="row">
     <button type="button" class="btn btn-light" name = "next"><p>Następne</p></button>
-    <button type="button" class="btn btn-light" name = "{{wordToLearn.id}}"><p>Dodaj do ulubionych</p></button>
+    <button onclick="disable(this)" type="button" class="btn btn-light"  name = "{{wordToLearn.id}}"><p>Dodaj do ulubionych</p></button>
+    <input type="text" name="foo" style="display: none;">
     </div>
 </div>
 </form>
@@ -23,3 +24,9 @@
 <h1>Brak słówek do nauki z tego poziomu!<h1>
 </div>
 {% endif %}
+
+<script>
+function disable (x){
+    x.disabled = true;
+}
+</script>

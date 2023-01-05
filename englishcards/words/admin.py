@@ -21,8 +21,12 @@ class QuizAdmin(admin.ModelAdmin):
     search_fields = ['user']
 
 class FavoriteUserCardsAdmin(admin.ModelAdmin):
-    list_display = ['user','card']
-    search_fields = ['user','card']
+    list_display = ['user','card','get_wordlLevel']
+    
+    def get_wordlLevel(self, obj):
+        return obj.card.get_wordLevel_display()
+    get_wordlLevel.admin_order_field  = 'card__wordLevel' 
+    get_wordlLevel.short_description = 'Wordl level'  
 
 admin.site.register(MemoryCard, MemoryCardAdmin)
 admin.site.register(QuizElement, QuizElementAdmin)
