@@ -17,7 +17,7 @@ class TestUserModel(TestCase):
             password = 'sadasda21.'
         )
         self.assertIsNotNone(self.user)
-        # self.assertIsNotNone(self.user2)
+        self.assertIsNotNone(self.user2)
         
         
     def test_if_user_inserted(self):
@@ -27,3 +27,6 @@ class TestUserModel(TestCase):
             password = 'sadasda21.'
         )
         self.assertIsNotNone(self.user)
+        
+        
+        
