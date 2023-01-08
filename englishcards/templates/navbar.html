@@ -19,6 +19,7 @@
       <li><a href="{% url 'home' %}">Strona główna</a></li>
     </ul> -->
     <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'findCard' %}"><span class="glyphicon glyphicon-education"></span> Znajdź słówko</a></li>
       <li><a href="{% url 'selectLevel' %}"><span class="glyphicon glyphicon-education"></span> Nauka słówek</a></li>
       <li><a href="{% url 'addWord' %}"><span class="glyphicon glyphicon-plus"></span> Dodaj słówko</a></li>
       <li><a href="{% url 'userFavorites' %}"><span class="glyphicon glyphicon-star"></span> Ulubione</a></li>
@@ -28,7 +29,6 @@
       <li><a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-wrench"></span> Panel Administratora</a></li>
     </ul>
       {% endif %}
-      
       {% else %}
       <ul class="nav navbar-nav navbar-right">
       <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>Zaloguj</a></li> 

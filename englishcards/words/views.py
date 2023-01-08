@@ -7,6 +7,7 @@ from .forms import AddMemoryCardForm
 import random
 from django.urls import reverse
 from logins.views import home
+from django.db.models import Q
 
 @login_required
 def addWordPage(request):
@@ -112,6 +113,18 @@ def learnByLevel(request, slug):
 
     return render(request, 'words/fiszki.html', context)
     
+
+def findCard(request):
+    context = {}
+    if request.method == 'POST':
+        searchCard = request.POST.get('findCard')
+        card = MemoryCard.objects.filter(Q(englishName__iexact = searchCard) | Q(polishName__iexact = searchCard)).first()
+        if not card:
+            message = 'Brak słówka w bazie danych!'
+            context = {'message': message}
+        else:
+            context = {'card': card}
+    return render(request, 'words/findCard.html', context)
 
 # Create your views here.
 
