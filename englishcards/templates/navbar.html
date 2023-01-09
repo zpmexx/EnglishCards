@@ -23,7 +23,8 @@
       <li><a href="{% url 'selectLevel' %}"><span class="glyphicon glyphicon-education"></span> Nauka słówek</a></li>
       <li><a href="{% url 'addWord' %}"><span class="glyphicon glyphicon-plus"></span> Dodaj słówko</a></li>
       <li><a href="{% url 'userFavorites' %}"><span class="glyphicon glyphicon-star"></span> Ulubione</a></li>
-      <!-- <li><a href="{% url 'addQuiz' %}"><span class="glyphicon glyphicon-check"></span> Quiz</a></li> --> 
+      <li><a href="{% url 'addQuiz' %}"><span class="glyphicon glyphicon-check"></span> Nowy Quiz</a></li>
+      <li><a href="{% url 'quizHistory' %}"><span class="glyphicon glyphicon-check"></span> Twoje Quizy</a></li>
       <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Wyloguj</a></li>
       {% if user.is_authenticated and request.user.is_staff %}
       <li><a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-wrench"></span> Panel Administratora</a></li>
