@@ -1,18 +1,54 @@
 {% load crispy_forms_tags %} 
 <!doctype html>
+<style>
+    .row {
+		margin: 0 60px;
+        
+	}
+
+	
+
+	.column {
+		float: center;
+		width: 75%;
+		padding: 0 20px;
+	}
+    .buttons {
+        width: 600px;
+        height: 100px;
+    }
+    .container {
+        width: 600px;
+        height: 100px;
+        align-items: center;
+    }
+    .top-buffer { margin-top:20px; }
+</style>
 {% include 'navbar.html' %}
 {% load static %}
-
+    <center>
     <div class="container">
-        <h3> {{card.card.polishName}} </h3>    
+        <h3>Zaznacz prawidłowe tłumaczenie słowa: </h3>
+        <h3> {{card.card.polishName}} </h3> 
+    </div>   
         <tr>   
             <form method="POST">
                 {% csrf_token %}
                 <div class = "buttons">
+
             {% for c in four_cards %}
-            <button type="submit" class="btn btn-light" name="answer_button" value=' [ "{{c.id}}" , "{{iterator}}" , "{{quiz_id}}" ]'><p>{{c.card.englishName}}</p></button>   
+
+                <div class="top-buffer">
+            <div class="row">
+                <div class="column">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="answer_button" width="600px" value=' [ "{{c.id}}" , "{{iterator}}" , "{{quiz_id}}" ]'><p>{{c.card.englishName}}</p></button>   
+        </div>
+    </div>
+</div>
+
             {% endfor%}
-            </form>
-        </div>                                                                                                                                    
+            </form>                                                                                                                           
         </tr>
     </div>
+
+</center>

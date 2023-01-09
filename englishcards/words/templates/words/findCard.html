@@ -1,17 +1,73 @@
 {% include 'navbar.html' %}
+<style>
+    .inner-addon { 
+    position: relative; 
+    width: 600px;
+    margin-top: 50px;
+}
 
-<h1>Podaj słówko do znaleźienia</h1>
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.container .card  {
+    margin-top: 100px;
+    position: relative;
+		display: flex;
+		width: 600px;
+		height: 300px;
+        background: #65f7cb;
+        justify-content: center;
+		align-items: center;
+	}
+
+p {
+    font-size: 20px;
+    color: black;
+}
+h2 {
+    font-size: 50px;
+    font-style: italic;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+}
+</style>
+<center>
+<h1>Wpisz szukane słowo</h1>
 <form method = "POST"  class="login-box-form">
     {% csrf_token %}
-    <input id="findCard" type="text" name="findCard">
-    <input type="submit" value="OK">
+    <div class="inner-addon left-addon">
+        <i class="glyphicon glyphicon-search"></i>
+    <input id="findCard" type="text" name="findCard"  class="form-control" placeholder="Wpisz szukane słowo">
+    </div>
 </form>
 
+<div class="container">
+<div class="card">
 {% if card %}
-    <p>{{card.polishName}}</p>
+<div class="content">
+    <h2>{{card.polishName}}</h2>
     <p>{{card.polishDescription}}</p>
-    <p>{{card.englishName}}</p>
+    <h2>{{card.englishName}}</h2>
     <p>{{card.englishDescription}}</p>
+</div>
 {% else %}
 <p>{{message}}</p>
 {% endif %}
+</center>
+</div>
+</div>
