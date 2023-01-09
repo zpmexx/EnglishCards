@@ -2,19 +2,19 @@
 <!doctype html>
 {% include 'navbar.html' %}
 {% load static %}
-<body style="background-color:rgb(178, 186, 187);"></body>
+<body style="background-color:#65f7cb;"></body>
 <form method = "POST"  class="login-box-form">
 {% csrf_token %}
     <div class="container">
       {% for message in messages  %}
         {% if 'added_word' in message.tags %}
         <div class="container"  style="border:3px;">
-            <p style ="color: #05A126; font-size:30px; ">{{message}}</p>
+            <p style ="color: black; font-size:30px; ">{{message}}</p>
         </div>
         {% endif %}
       {% endfor %}
       {{form|crispy}}
-      <input type="submit" class="btn btn-primary" value="Dodaj">
+      <input type="submit" class="btn btn-primary" style="width: 100%; background-color: green" value="Dodaj">
     </div>
 </form>
 </body>

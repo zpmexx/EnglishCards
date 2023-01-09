@@ -61,12 +61,12 @@
 
 {% for level in levels %}
 {% if level == 'A1' %}
-    <div class = "column" style="background-color:#80ff80;">
+    <div class = "column" style="background-color:#65f7cb">
         <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
     </div>
 {% endif %}
 {% if level == 'A2' %}
-    <div class = "column" style="background-color:#4dff4d;">
+    <div class = "column" style="background-color:#20f7b6">
         <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
     </div>
 {% endif %}
@@ -83,12 +83,12 @@
     {% endif %}
 
         {% if level == 'C1' %}
-            <div class = "column" style="background-color:#ffd9b3">
+            <div class = "column" style="background-color:#f7f5ae">
                 <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
             </div>
         {% endif %}
         {% if level == 'C2' %}
-            <div class = "column" style="background-color:#ffbf80;">
+            <div class = "column" style="background-color:#fcf996">
                 <h2><a href="{% url 'learnByLevel' level %}">{{level}}</a></h2>
             </div>
 

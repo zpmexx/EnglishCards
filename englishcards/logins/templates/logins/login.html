@@ -1,31 +1,35 @@
 <!doctype html>
 {% include 'navbar.html' %}
-{% load static %}
 
+{% load static %}
+<style>
+  .body {
+    background: #65f7cb;
+  }
+</style>
 <link rel ="stylesheet" href ="{% static 'logins/logins.css' %}">
-<!------ Include the above in your HEAD tag ---------->
+
 
 <html>
 <body>
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Icon -->
     <div class="fadeIn first">
     <img src="{% static 'logins/logo.png' %}" id= "icon" alt="ALT ICON" width="90%" height="100%"></img>
     </div>
     <br></br>
-    <!-- Login Form -->
     <form method="POST">
     {% csrf_token %}
-      <input type="text" id="login" class="input" name="username" placeholder="nazwa użytkownika">
-      <input type="password" id="password" class="input" name="password" placeholder="hasło">
+    
+    <div class="column">
+      <div class="row">
+      <input type="text" id="login" class="input" name="username" placeholder="nazwa użytkownika"></div>
+      <div class="row"><input type="password" id="password" class="input" name="password" placeholder="hasło"></div></div>
       {% for message in messages %}
     <div class="login-box-message">{{message}}</div>
     {% endfor %}
       <br></br>
-      <input type="submit" class="submit" value="Zaloguj">
+      <input type="submit" class="btn btn-primary" style="background-color: aquamarine; color: black; width: 90%" value="Zaloguj">
     </form>
   </div>
 </div>
