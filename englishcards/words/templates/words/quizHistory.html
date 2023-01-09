@@ -1,0 +1,35 @@
+{% load crispy_forms_tags %} 
+<!doctype html>
+{% include 'navbar.html' %}
+<style>
+    table {
+        width: 20%;
+        border: 1px solid #999;
+        text-align: left;
+        border-collapse: collapse;
+        margin: 0 0 1em 0;
+        caption-side: top;
+      }
+      
+      caption, td, th {
+        padding: 0.3em;
+      }
+      
+      th, td {
+        border: 1px solid #999;
+        width: 25%;
+      }
+</style>
+{% load static %}
+
+    <div class="container">
+            {% for quiz in quizzes %}
+            <table>
+                <tr>
+                  <th><a href="{% url 'quizDetails' quiz_id=quiz.id %}" > {{ quiz.date }} </a></th>
+                  <th>{{quiz.points}}</th>
+                </tr>
+              </table>
+            {% endfor %}
+    </div>
+ 

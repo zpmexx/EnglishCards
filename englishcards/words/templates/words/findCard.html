@@ -1,0 +1,17 @@
+{% include 'navbar.html' %}
+
+<h1>Podaj słówko do znaleźienia</h1>
+<form method = "POST"  class="login-box-form">
+    {% csrf_token %}
+    <input id="findCard" type="text" name="findCard">
+    <input type="submit" value="OK">
+</form>
+
+{% if card %}
+    <p>{{card.polishName}}</p>
+    <p>{{card.polishDescription}}</p>
+    <p>{{card.englishName}}</p>
+    <p>{{card.englishDescription}}</p>
+{% else %}
+<p>{{message}}</p>
+{% endif %}

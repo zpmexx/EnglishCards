@@ -1,0 +1,20 @@
+{% load crispy_forms_tags %} 
+<!doctype html>
+{% include 'navbar.html' %}
+{% load static %}
+
+    <div class="container">
+
+            {% for c in cards %}
+            <table>
+                <tr>
+                  <th>{{c.card.card.polishName}}</th>
+                  <th>{{c.card.card.englishName}}</th>
+                  <th>{{c.wasCorrect}}</th>
+                </tr>
+              </table>
+            {% endfor %}
+            <h3>Punkty {{points}}</h3>
+
+    </div>
+ 

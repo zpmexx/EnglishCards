@@ -12,4 +12,4 @@ class AddQuizForm(ModelForm):
     
     class Meta:
         model = QuizElement
-        fields = ['memoryCard']
+        fields = ['card']

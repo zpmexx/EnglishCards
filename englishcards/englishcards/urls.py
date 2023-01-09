@@ -31,5 +31,9 @@ urlpatterns = [
     path('ulubione/', logins_views.userFavorites, name = 'userFavorites'),
     path('nauka/', words_views.selectLevel, name = 'selectLevel'),
     path('nauka/<slug:slug>/', words_views.learnByLevel, name = 'learnByLevel'),
+    path('znajdz/', words_views.findCard, name = 'findCard'),
+    path('twoje_quizy/', words_views.quizHistory, name = 'quizHistory'),
+    path('quiz/<int:quiz_id>/', words_views.quizDetails, name='quizDetails'),
+
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

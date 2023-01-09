@@ -1,0 +1,16 @@
+{% load crispy_forms_tags %} 
+<!doctype html>
+{% include 'navbar.html' %}
+    <h1>Szczegóły quizu</h1>
+    <table>
+        <tr>
+            <th>Słówko</th>
+            <th>Wynik</th>
+        </tr>
+        {% for quiz_element in quiz_elements %}
+            <tr>
+                <td>{{ quiz_element.card.card }}</td>
+                <td>{{ quiz_element.wasCorrect }}</td>
+            </tr>
+        {% endfor %}
+    </table>

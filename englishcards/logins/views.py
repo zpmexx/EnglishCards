@@ -58,6 +58,8 @@ def userFavorites(request):
     favoriteCards = paginator.get_page(page_number)
     context = {'favoriteCards': favoriteCards}
     iterator = 0
+    for i in favoriteCards:
+        print(i)
     if request.method == 'POST':
         for arg in request.POST:
             if iterator == 0:
