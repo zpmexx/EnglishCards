@@ -86,19 +86,21 @@
 <h1>Words of the day:</h1>
 <div class="row">
 	{% for word in dailyWords %}
-	<div class="column">
-		<div class="container">
-			<div class="card">
-				<div class="slide slide1">
-					<div class="content">
-						<h2 aria-hidden="true">{{word.polishName}}</h2>
-						<h3 aria-hidden="true">{{word.polishDescription}}</h3>
+	<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		<div class="column">
+			<div class="container">
+				<div class="card">
+					<div class="slide slide1">
+						<div class="content">
+							<h2 aria-hidden="true">{{word.polishName}}</h2>
+							<h3 aria-hidden="true">{{word.polishDescription}}</h3>
+						</div>
 					</div>
-				</div>
-				<div class="slide slide2">
-					<div class="content">
-						<h2>{{word.englishName}}</h2>
-						<h3>{{word.englishDescription}}</h3>
+					<div class="slide slide2">
+						<div class="content">
+							<h2>{{word.englishName}}</h2>
+							<h3>{{word.englishDescription}}</h3>
+						</div>
 					</div>
 				</div>
 			</div>
