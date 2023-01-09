@@ -4,27 +4,15 @@
 {% load static %}
 
     <div class="container">
-<<<<<<< HEAD
-        {% for card in cards_to_learn %}
-        <tr>                                                                                                                                         
-            <td>{{card}}</td>                                                                                                 
-=======
-        {% for c in four_cards %}
-        <tr>                                            
-
-            <h4>{{c}}</h4>                                                                                                 
-
->>>>>>> 232154df8bb6fb2a561da7c1cfa80477b28a1d2c
+        <h3> {{card.card.polishName}} </h3>    
+        <tr>   
+            <form method="POST">
+                {% csrf_token %}
+                <div class = "buttons">
+            {% for c in four_cards %}
+            <button type="submit" class="btn btn-light" name="answer_button" value=' [ "{{c.id}}" , "{{iterator}}" , "{{quiz_id}}" ]'><p>{{c.card.englishName}}</p></button>   
+            {% endfor%}
+            </form>
+        </div>                                                                                                                                    
         </tr>
-        {% endfor %}
-        <h1> {{iterator}} <h1>
     </div>
-    <div class = "buttons"> 
-    <form method="POST">
-        {% csrf_token %}
-    <div class = "buttons">
-        <div class="row">
-        <button type="submit" class="btn btn-light" name="iterator" value={{iterator}}><p>Następne</p></button>
-        </div>
-    </div>
-    </form>

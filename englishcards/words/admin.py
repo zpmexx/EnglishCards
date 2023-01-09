@@ -13,15 +13,15 @@ class MemoryCardAdmin(admin.ModelAdmin):
     )
 
 class QuizElementAdmin(admin.ModelAdmin):
-    list_display = ['memoryCard','wasCorrect','quiz']
-    search_fields = ['memoryCard','wasCorrect','quiz']
+    list_display = ['card','wasCorrect','quiz']
+    search_fields = ['card','wasCorrect','quiz']
 
 class QuizAdmin(admin.ModelAdmin):
     list_display = ['user']
     search_fields = ['user']
 
 class FavoriteUserCardsAdmin(admin.ModelAdmin):
-    list_display = ['user','card','get_wordlLevel']
+    list_display = ['user','card','get_wordlLevel', 'id', 'score']
     
     def get_wordlLevel(self, obj):
         return obj.card.get_wordLevel_display()

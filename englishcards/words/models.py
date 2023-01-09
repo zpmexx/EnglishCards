@@ -39,9 +39,10 @@ class MemoryCard(models.Model):
 class FavoriteUserCards(models.Model):
     user = models.ForeignKey(User, verbose_name="Użytkownik",on_delete=models.CASCADE)
     card = models.ForeignKey(MemoryCard, verbose_name="Karta",on_delete=models.CASCADE)
+    score = models.IntegerField(blank=True, null=True, default = 0)
 
     def __str__(self):
-        return str(f'{self.user.username},{self.card.englishName},{self.card.polishName}')
+        return str(f'{self.user.username},{self.card.englishName},{self.card.polishName},{self.score}')
     
     class Meta:
         verbose_name = "Ulubiona karta"
@@ -50,12 +51,14 @@ class FavoriteUserCards(models.Model):
 
 class Quiz(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
+    points = models.IntegerField(blank=True, null=True, default = 0)
+    date = models.DateTimeField(blank=True, null=True)
 
 
 
 
 class QuizElement(models.Model):
-    memoryCard = models.ForeignKey(FavoriteUserCards, on_delete=models.CASCADE)
+    card = models.ForeignKey(FavoriteUserCards, on_delete=models.CASCADE)
     wasCorrect = models.BooleanField(verbose_name="Poprawność odpowiedzi", blank=True, null=True, default = False)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     order = models.IntegerField(blank=True, null=True, default = 0)
