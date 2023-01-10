@@ -2,34 +2,50 @@
 <!doctype html>
 {% include 'navbar.html' %}
 <style>
-    table {
-        width: 20%;
-        border: 1px solid #999;
-        text-align: left;
-        border-collapse: collapse;
-        margin: 0 0 1em 0;
-        caption-side: top;
-      }
-      
-      caption, td, th {
-        padding: 0.3em;
-      }
-      
-      th, td {
-        border: 1px solid #999;
-        width: 25%;
-      }
+    #results {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #results td, #results th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #results tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #results tr:hover {background-color: #ddd;}
+  
+  #results th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
 </style>
 {% load static %}
 
     <div class="container">
+      <table id="results">
+        <tr>
+          <th>Data i godzina</th>
+          <th>Wynik</th>
+        </tr>
             {% for quiz in quizzes %}
-            <table>
+            
                 <tr>
-                  <th><a href="{% url 'quizDetails' quiz_id=quiz.id %}" > {{ quiz.date }} </a></th>
-                  <th>{{quiz.points}}</th>
+                  {% if quiz.date is null%}
+
+                  {% else %}
+                  <td><a href="{% url 'quizDetails' quiz_id=quiz.id %}" > {{ quiz.date }} </a></td>
+                  <td>{{quiz.points}}</td>
+                  {% endif %}
+
                 </tr>
-              </table>
+              
             {% endfor %}
+          </table>
     </div>
  

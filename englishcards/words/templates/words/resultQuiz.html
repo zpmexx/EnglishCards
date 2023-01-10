@@ -1,20 +1,62 @@
 {% load crispy_forms_tags %} 
 <!doctype html>
+<style>
+  #results {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #results td, #results th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #results tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #results tr:hover {background-color: #ddd;}
+  
+  #results th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+  </style>
 {% include 'navbar.html' %}
 {% load static %}
 
     <div class="container">
-
+      <table id="results">
+        <tr>
+          <th>Słówko</th>
+          <th>Odpowiedź</th>
+          <th>Poprawność</th>
+        </tr>
             {% for c in cards %}
-            <table>
+            
                 <tr>
-                  <th>{{c.card.card.polishName}}</th>
-                  <th>{{c.card.card.englishName}}</th>
-                  <th>{{c.wasCorrect}}</th>
+                  <td>{{c.card.card.polishName}}</td>
+                  <td>{{c.card.card.englishName}}</td>
+                  <td>{% if c.wasCorrect %}
+                    <center>
+                        <span class="glyphicon glyphicon-ok"></span>
+                      </center>
+                      {% else %}
+                      <center>
+                        <span class="glyphicon glyphicon-remove"></span>
+                      {% endif %}
+                    </center>
+                  </td>
                 </tr>
-              </table>
+              
             {% endfor %}
-            <h3>Punkty {{points}}</h3>
+            <tr>
+              <th colspan="3">Punkty: {{points}}/10</th>
+            </tr>
+          </table>
+           
 
     </div>
  
