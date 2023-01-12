@@ -4,7 +4,10 @@
   background-color: #dfe6e9;
 }
 	.row {
-		margin: 0 60px;
+		margin: 0 250px;
+		display: flex;
+  align-items: center;
+  justify-content: center;
 	}
 
 	.row:after {
@@ -85,11 +88,14 @@
 	}
 </style>
 <link rel="stylesheet" href="{% static 'logins/home.css' %}" />
+
 <h1>Welcome Dear User!</h1>
 <h1>Words of the day:</h1>
+
 <div class="row">
 	{% for word in dailyWords %}
 	<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		
 		<div class="column">
 			<div class="container">
 				<div class="card">
@@ -107,7 +113,9 @@
 					</div>
 				</div>
 			</div>
+		
 		</div>
+	
 	</div>
 	{% endfor %}
 </div>
