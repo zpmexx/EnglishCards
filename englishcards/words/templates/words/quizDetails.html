@@ -34,7 +34,7 @@
         {% for quiz_element in quiz_elements %}
             <tr>
                 <td>{{ quiz_element.card.card }}</td>
-                <td>{% if c.wasCorrect %}
+                <td>{% if quiz_element.wasCorrect %}
                     <center>
                         <span class="glyphicon glyphicon-ok"></span>
                       </center>
@@ -48,6 +48,6 @@
 
         {% endfor %}
         <tr>
-            <th colspan="3">Punkty: {{points}}/10</th>
+            <th colspan="3">Punkty: {{quiz.points}}/10</th>
           </tr>
     </table>

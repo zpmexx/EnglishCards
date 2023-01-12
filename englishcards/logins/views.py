@@ -52,14 +52,8 @@ def logoutPage(request):
     return redirect('login')
 
 def userFavorites(request):
-    favoriteCards = FavoriteUserCards.objects.filter(user = request.user)
-    paginator = Paginator(favoriteCards, 3)
-    page_number = request.GET.get("page")
-    favoriteCards = paginator.get_page(page_number)
-    context = {'favoriteCards': favoriteCards}
+    
     iterator = 0
-    for i in favoriteCards:
-        print(i)
     if request.method == 'POST':
         for arg in request.POST:
             if iterator == 0:
@@ -68,4 +62,11 @@ def userFavorites(request):
                 word = arg
         englishWord, polishWord = word.split(',')
         FavoriteUserCards.objects.filter(user = request.user, card__englishName = englishWord, card__polishName = polishWord).delete()
+    
+    favoriteCards = FavoriteUserCards.objects.filter(user = request.user)
+    paginator = Paginator(favoriteCards, 3)
+    page_number = request.GET.get("page")
+    favoriteCards = paginator.get_page(page_number)
+    context = {'favoriteCards': favoriteCards}
+    
     return render (request, 'logins/userfavorites.html',context)

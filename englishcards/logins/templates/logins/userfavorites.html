@@ -107,8 +107,7 @@
 }
 </style>
 <link rel="stylesheet" href="{% static 'logins/home.css' %}" />
-<h1>Welcome Dear User!</h1>
-<h1>Words of the day:</h1>
+<h1>Welcome {{request.user}}!</h1>
 <center>
   <div class="pagination">
       <span class="step-links">
@@ -126,9 +125,11 @@
   </center>
 <div class="row">
 	{% for favorite in favoriteCards %}
+	<form method="POST">
+		{% csrf_token %}
 	<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 		<div class="column">
-			<div class="container">
+			<div class="container" style= "width: 50%;">
 				<div class="card">
 					<div class="slide slide1">
 						<div class="content">
@@ -140,11 +141,13 @@
 						<div class="content">
 							<h2>{{favorite.card.englishName}}</h2>
 							<h3>{{favorite.card.englishDescription}}</h3>
+							<input type="submit" value="Usuń z ulubionych" name="{{favorite.card.englishName}},{{favorite.card.polishName}}" style="width: 100%;border-radius: 30px;">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</form>
 	</div>
 	{% endfor %}
 </div>
