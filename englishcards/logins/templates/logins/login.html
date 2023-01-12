@@ -130,14 +130,18 @@ input[type="submit"]:active {
 </style>
 <html>
 <body>
-
+  <form method="POST">
+    {% csrf_token %}
   <div class="login">
-    <input type="text" placeholder="Username" id="login">
-    <input type="password" placeholder="password" id="password">
-  <input type="submit" value="Sign In">
+    <input type="text" placeholder="Username" name="username" class="input" id="login">
+    <input type="password" placeholder="password" name="password" class="input" id="password">
+  <input type="submit" value="Zaloguj">
 </div>
+{% for message in messages %}
+    <div class="login-box-message">{{message}}</div>
+    {% endfor %}
 <div class="shadow"></div>
-
+</form>
 
 <!-- https://codepen.io/juliodonoso/pen/AbpxEm -->
 <!-- <div class="wrapper fadeInDown">

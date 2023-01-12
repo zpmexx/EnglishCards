@@ -28,7 +28,7 @@ body { background-image: radial-gradient( cover, rgba(92,100,111,1) 0%,rgba(31,3
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.2), 0 1px 0 #fff;
 }
-input[type="password"], input[type="text"] {
+input[type="password"], input[type="text"], input[type="email"] {
   background: url('http://i.minus.com/ibhqW9Buanohx2.png') center left no-repeat, linear-gradient(top, #d6d7d7, #dee0e0);
   border: 1px solid #a1a3a3;
   border-radius: 4px;
@@ -131,16 +131,16 @@ input[type="submit"]:active {
         <form method = "POST"  class="login-box-form">
             {% csrf_token %}
                 {{ form.username }}
-                
                 {{ form.first_name }}
                 {{ form.last_name }}
-                <!-- {{ form.email }} -->
+                {{ form.email }}
                 {{ form.password1 }}
                 {{ form.password2 }}
                 <input type="submit" value="Zarejestruj">
                  {% for message in messages  %}
                     {% if 'bad_register_credentials' in message.tags %}
-                        <p style ="color: red">{{message}}</p>
+                    <br>
+                       <center> <p style ="color: red">{{message}}</p></center>
                     {% endif %}
                 {% endfor %}
               </div>
